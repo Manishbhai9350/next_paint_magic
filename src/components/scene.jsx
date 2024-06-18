@@ -2,7 +2,7 @@
 import useWindow from "@/hooks/useWindow"
 import { useEffect, useRef } from "react"
 
-const scene = () => {
+const Scene = () => {
   const canvas = useRef(null)
   const {height,width} = useWindow()
   const prevPos = useRef(null)
@@ -55,4 +55,4 @@ const scene = () => {
   )
 }
 
-export default scene
+export default Scene
