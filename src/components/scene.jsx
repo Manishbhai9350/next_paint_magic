@@ -1,8 +1,13 @@
 'use client'
 import useWindow from "@/hooks/useWindow"
+import { useControls } from "leva"
 import { useEffect, useRef } from "react"
 
 const Scene = () => {
+  const {size} = useControls({
+    size:{min:1,max:70,value:40},
+    // color:{value:'black',}
+  })
   const canvas = useRef(null)
   const {height,width} = useWindow()
   const prevPos = useRef(null)
@@ -26,10 +31,9 @@ const Scene = () => {
     for (let i = 0; i < movement ; i++) {
       const {x:prevX,y:prevY} = prevPos.current
       let t = (1/movement)*i
-      console.log(t)
       const newX = lerp(prevX,x,t)
       const newY = lerp(prevY,y,t)
-      draw(newX,newY,40)
+      draw(newX,newY,size)
     }
    }
    prevPos.current = {x,y}
